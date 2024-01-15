@@ -2,6 +2,7 @@ package com.devsuperior.dscommerce.entities;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -98,6 +99,10 @@ public class Product implements Serializable {
 
 	public Set<OrderItem> getItems() {
 		return items;
+	}
+
+	public List<Order> getOrders() {
+		return items.stream().map(x -> x.getOrder()).toList();
 	}
 
 	@Override
