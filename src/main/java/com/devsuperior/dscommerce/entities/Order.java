@@ -34,7 +34,7 @@ public class Order implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 
-	private Integer orderStatus;
+	private Integer status;
 
 	@ManyToOne
 	@JoinColumn(name = "client_id")
@@ -49,10 +49,10 @@ public class Order implements Serializable {
 	public Order() {
 	}
 
-	public Order(Long id, Instant moment, Integer orderStatus, User client, Payment payment) {
+	public Order(Long id, Instant moment, Integer status, User client, Payment payment) {
 		this.id = id;
 		this.moment = moment;
-		this.orderStatus = orderStatus;
+		this.status = status;
 		this.client = client;
 		this.payment = payment;
 	}
@@ -82,12 +82,12 @@ public class Order implements Serializable {
 	}
 
 	public OrderStatus getOrderStatus() {
-		return OrderStatus.valueOf(orderStatus);
+		return OrderStatus.valueOf(status);
 	}
 
-	public void setOrderStatus(OrderStatus orderStatus) {
-		if (orderStatus != null) {
-			this.orderStatus = orderStatus.getCode();
+	public void setOrderStatus(OrderStatus status) {
+		if (status != null) {
+			this.status = status.getCode();
 		}
 	}
 
