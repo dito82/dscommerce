@@ -25,6 +25,10 @@ public class Category implements Serializable {
 	private Long id;
 	private String name;
 
+	/*
+	 * OBS: NO CASO DE MUITOS PARA MUITOS, USA-SE HASHSET PARA NÃO HAVER REPETIÇÃO
+	 * DO PAR(PRODUTO/CATEGORIA)
+	 */
 	@JsonIgnore
 	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
