@@ -30,8 +30,8 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<ProductDTO> findAll(Pageable pageable) {
-		Page<Product> result = repository.findAll(pageable);
+	public Page<ProductDTO> findAll(String name, Pageable pageable) {
+		Page<Product> result = repository.searchByName(name, pageable);
 		/*
 		 * LAMBDA - converter Product in ProductDTO: return result.stream().map(x -> new
 		 * ProductDTO(x)).toList();
